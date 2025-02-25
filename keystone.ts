@@ -14,6 +14,7 @@ import { insertSeedData } from './seed-data';
 import { sendPasswordResetEmail } from './lib/mail';
 import { extendGraphqlSchema } from './mutations';
 import { CartItem } from './schemas/Cart';
+import { Role } from './schemas/Role';
 
 function check(name: string) { }
 
@@ -68,6 +69,7 @@ export default withAuth(
             CartItem,
             OrderItem,
             Order,
+            Role,
         }),
         extendGraphqlSchema,
         ui: {
