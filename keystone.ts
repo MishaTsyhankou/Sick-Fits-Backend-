@@ -15,6 +15,7 @@ import { sendPasswordResetEmail } from './lib/mail';
 import { extendGraphqlSchema } from './mutations';
 import { CartItem } from './schemas/Cart';
 import { Role } from './schemas/Role';
+import { permissionsList } from './schemas/fields';
 
 function check(name: string) { }
 
@@ -80,7 +81,7 @@ export default withAuth(
         },
         session: withItemData(statelessSessions(sessionConfig), {
             // GraphQL Query
-            User: 'id name email',
+            User: `id name email role {${permissionsList.join(' ')}}`,
         }),
     })
 );
